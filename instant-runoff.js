@@ -323,6 +323,9 @@ function clear_background_color() {
   var base_row = 2, base_column = 2, num_columns = 10;
   
   var results_range = get_range_with_values(VOTE_SHEET, base_row, base_column, num_columns);
+  if (results_range == null) {
+    return;
+  }
   results_range.setBackground('#eeeeee');
   
   if (USING_KEY) {
