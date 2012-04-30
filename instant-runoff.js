@@ -192,7 +192,6 @@ function get_votes(results_range, candidates, keys_range, valid_keys) {
       var key_cell_value = key_cell.getValue();
       if (!include(valid_keys, key_cell_value) ||
           include(keys_used, key_cell_value)) {
-          Browser.msgBox(keys_used + '\n' + key_cell_value);
         key_cell.setBackground('#ffaaaa');
       } else {
         key_cell.setBackground('#aaffaa');
