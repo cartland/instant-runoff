@@ -35,6 +35,8 @@ function run_instant_runoff() {
   missing_keys_used_sheet_alert = false;
   
   /* Begin */
+  clear_background_color();
+
   var results_range = get_range_with_values(VOTE_SHEET, BASE_ROW, BASE_COLUMN, NUM_COLUMNS);
   
   if (results_range == null) {
