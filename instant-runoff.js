@@ -185,7 +185,7 @@ function get_votes(results_range, candidates, keys_range, valid_keys) {
     if (first_is_blank) {
       break;
     }
-      
+    
     if (keys_range != null) {
       // Only use key once.
       var key_cell = keys_range.getCell(row, 1);
@@ -322,6 +322,10 @@ function clear_background_color() {
   
   var results_range = get_range_with_values(VOTE_SHEET, base_row, base_column, num_columns);
   results_range.setBackground('#eeeeee');
+  
+  if (USING_KEY) {
+    var keys_range = get_range_with_values(VOTE_SHEET, BASE_ROW, KEY_COLUMN, 1);
+    keys_range.setBackground('#eeeeee');
+  }
 }
-
 
