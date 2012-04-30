@@ -193,6 +193,7 @@ function get_votes(results_range, candidates, keys_range, valid_keys) {
       if (!include(valid_keys, key_cell_value) ||
           include(keys_used, key_cell_value)) {
         key_cell.setBackground('#ffaaaa');
+        continue;
       } else {
         key_cell.setBackground('#aaffaa');
         keys_used.push(key_cell_value);
