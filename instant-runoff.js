@@ -2,22 +2,21 @@
 Instant-runoff voting with Google Form
 Author: Chris Cartland
 Date created: 2012-04-29
-Last update: 2012-04-29
+Last code update: 2012-10-03
 */
 
 
 /* Settings */ 
 
-var VOTE_SHEET = "Votes";
+var VOTE_SHEET_NAME = "Votes";
 var BASE_ROW = 2;
 var BASE_COLUMN = 3;
 var NUM_COLUMNS = 10;
 
-var KEYS_SHEET = "Keys";
-var USING_KEY = true;
-var KEY_COLUMN = 2;
-
-var KEYS_USED_SHEET = "Keys Used";
+var USING_KEYS = true;
+var VOTE_SHEET_KEYS_COLUMN = 2;
+var KEYS_SHEET_NAME = "Keys";
+var USED_KEYS_SHEET_NAME = "Used Keys";
 
 /* End Settings */
 
@@ -37,10 +36,10 @@ function run_instant_runoff() {
   /* Begin */
   clear_background_color();
 
-  var results_range = get_range_with_values(VOTE_SHEET, BASE_ROW, BASE_COLUMN, NUM_COLUMNS);
+  var results_range = get_range_with_values(VOTE_SHEET_NAME, BASE_ROW, BASE_COLUMN, NUM_COLUMNS);
   
   if (results_range == null) {
-    Browser.msgBox("No votes. Looking for sheet: " + VOTE_SHEET);
+    Browser.msgBox("No votes. Looking for sheet: " + VOTE_SHEET_NAME);
     return;
   }
   // Keys are used to prevent voters from voting twice.
@@ -51,17 +50,17 @@ function run_instant_runoff() {
   // List of valid keys
   var valid_keys;
   
-  if (USING_KEY) {
-    keys_range = get_range_with_values(VOTE_SHEET, BASE_ROW, KEY_COLUMN, 1);
+  if (USING_KEYS) {
+    keys_range = get_range_with_values(VOTE_SHEET_NAME, BASE_ROW, VOTE_SHEET_KEYS_COLUMN, 1);
     if (keys_range == null) {
       Browser.msgBox("Using keys and could not find column with submitted keys. " + 
-                     "Looking in column " + KEY_COLUMN + 
-                     " in sheet: " + VOTE_SHEET);
+                     "Looking in column " + VOTE_SHEET_KEYS_COLUMN + 
+                     " in sheet: " + VOTE_SHEET_NAME);
       return;
     }
-    var valid_keys_range = get_range_with_values(KEYS_SHEET, BASE_ROW, 1, 1);
+    var valid_keys_range = get_range_with_values(KEYS_SHEET_NAME, BASE_ROW, 1, 1);
     if (valid_keys_range == null) {
-      Browser.msgBox("List of valid keys cannot be found. Looking for sheet: " + KEYS_SHEET);
+      Browser.msgBox("List of valid keys cannot be found. Looking for sheet: " + KEYS_SHEET_NAME);
       return;
     }
     valid_keys = range_to_array(valid_keys_range);
@@ -81,7 +80,7 @@ function run_instant_runoff() {
     get_remaining_candidates(votes, candidates);
     if (candidates.length == 0) {
       if (missing_keys_used_sheet_alert) {
-        Browser.msgBox("Unable to record keys used. Looking for sheet: " + KEYS_USED_SHEET);    
+        Browser.msgBox("Unable to record keys used. Looking for sheet: " + USED_KEYS_SHEET_NAME);    
       }
       Browser.msgBox("Tie");
       return;
@@ -91,7 +90,7 @@ function run_instant_runoff() {
   }
   
   if (missing_keys_used_sheet_alert) {
-    Browser.msgBox("Unable to record keys used. Looking for sheet: " + KEYS_USED_SHEET);    
+    Browser.msgBox("Unable to record keys used. Looking for sheet: " + USED_KEYS_SHEET_NAME);    
   }
   Browser.msgBox("Winner: " + winner);
 }
@@ -224,7 +223,7 @@ function get_votes(results_range, candidates, keys_range, valid_keys) {
 }
 
 function update_keys_used(keys_used) {
-  var keys_used_range = get_range_with_values(KEYS_USED_SHEET, BASE_ROW, 1, 1);
+  var keys_used_range = get_range_with_values(USED_KEYS_SHEET_NAME, BASE_ROW, 1, 1);
   if (keys_used_range != null) {
     keys_used_range.setBackground('#ffffff');
     if (keys_used_range != null) {
@@ -235,7 +234,7 @@ function update_keys_used(keys_used) {
     }
   }
   
-  var keys_used_sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(KEYS_USED_SHEET);
+  var keys_used_sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(USED_KEYS_SHEET_NAME);
   if (keys_used_sheet == null) {
     missing_keys_used_sheet_alert = true;
     return;
@@ -322,14 +321,14 @@ function clear_background_color() {
   /* Settings */
   var base_row = 2, base_column = 2, num_columns = 10;
   
-  var results_range = get_range_with_values(VOTE_SHEET, base_row, base_column, num_columns);
+  var results_range = get_range_with_values(VOTE_SHEET_NAME, base_row, base_column, num_columns);
   if (results_range == null) {
     return;
   }
   results_range.setBackground('#eeeeee');
   
-  if (USING_KEY) {
-    var keys_range = get_range_with_values(VOTE_SHEET, BASE_ROW, KEY_COLUMN, 1);
+  if (USING_KEYS) {
+    var keys_range = get_range_with_values(VOTE_SHEET_NAME, BASE_ROW, VOTE_SHEET_KEYS_COLUMN, 1);
     keys_range.setBackground('#eeeeee');
   }
 }
