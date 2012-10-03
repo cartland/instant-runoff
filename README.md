@@ -45,12 +45,12 @@ _Notes about algorithm_
 
 1\. Go to Google Drive.
 
-[https://drive.google.com](https://drive.google.com)
+https://drive.google.com
 
 2\. Create a new Google Form.
 3\. Create questions.
 
-_Edit Form_
+**Edit Form**
 
 Create a title that tells voters what they are voting for.
 
@@ -70,7 +70,7 @@ _Notes about editing questions_
 4\. If you are using keys, create appropriate sheets.
 Go to the spreadsheet from the editor by clicking the dropdown "See responses" and clicking "Spreadsheet".
 
-_Rename Sheet1: "Votes"_
+**Rename Sheet1: "Votes"**
 
 * A1, "Timestamp"
 * B1, "Secret Key"
@@ -79,7 +79,7 @@ _Rename Sheet1: "Votes"_
 * E1, "Choice 3"
 * F1, "Choice 4"
 
-_Create New Sheet: "Keys"_
+**Create New Sheet: "Keys"**
 
 * A2, "secretkey1"
 * A3, "secretkey2"
@@ -89,7 +89,7 @@ _Create New Sheet: "Keys"_
 
 Add at least enough keys to accommodate voters.
 
-_Create New Sheet: "Used Keys"_
+**Create New Sheet: "Used Keys"**
 
 Leave blank.
 
