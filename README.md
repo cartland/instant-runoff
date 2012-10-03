@@ -43,12 +43,12 @@ _Notes about algorithm_
 
 # Example election
 
-1. Go to Google Drive.
+1\. Go to Google Drive.
 
 [https://drive.google.com](https://drive.google.com)
 
-2. Create a new Google Form.
-3. Create questions.
+2\. Create a new Google Form.
+3\. Create questions.
 
 _Edit Form_
 
@@ -67,7 +67,7 @@ _Notes about editing questions_
 * The choices must be the last questions in the form. This also means you can ask any number of questions before IRV as long as you update the settings.
 * None of the column names matter.
 
-4. If you are using keys, create appropriate sheets.
+4\. If you are using keys, create appropriate sheets.
 Go to the spreadsheet from the editor by clicking the dropdown "See responses" and clicking "Spreadsheet".
 
 _Rename Sheet1: "Votes"_
@@ -93,20 +93,20 @@ _Create New Sheet: "Used Keys"_
 
 Leave blank.
 
-5. From the form spreadsheet go to "Tools" -> "Script Editor..."
-6. Copy the code from instant-runoff.js into the editor.
+5\. From the form spreadsheet go to "Tools" -> "Script Editor..."
+6\. Copy the code from instant-runoff.js into the editor.
 
 Save the project (may need to create a project name). 
 
-7. Configure settings in the editor and match the settings with the names of your sheets.
+7\. Configure settings in the editor and match the settings with the names of your sheets.
 
 The settings in instant-runoff.js should already match the example names in this README.
 
-8. Send out the live form for voting. If you are using keys, don't forget to distribute unique secret keys.
+8\. Send out the live form for voting. If you are using keys, don't forget to distribute unique secret keys.
 
 Find the live form under Form -> Got to live form.
 
-9. After voting is complete run script.
+9\. After voting is complete run script.
 
 On the top bar click "Select function" and click "run_instant_runoff". Click the play arrow pointing to the right.
 
@@ -119,10 +119,8 @@ Found in [instant-runoff.js](https://github.com/cartland/instant-runoff/blob/mas
 * BASE\_ROW defines which row to contains the first voting information. Set this to 2.
 * BASE\_COLUMN is the column number for the first choice. In the example the first choice is in column C, so set this to 3.
 * NUM\_COLUMNS is the maximum number of choices. The example allows up to 4 chocies.
-
 * USING\_KEYS = true if you want to use keys.
 * VOTE\_SHEET\_KEYS\_COLUMN specifies which form column contains voter submitted keys in the VOTE_SHEET. In the example the secret keys are in column B, so set this to 2.
 * KEYS\_SHEET\_NAME is the name of the sheet containing the master list of valid voting keys. The examples calls this "Keys".
 * USED\_KEYS\_SHEET\_NAME is the name of the sheet where used keys are recorded. The example calls this "Used Keys".
-
 
