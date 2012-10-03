@@ -10,16 +10,16 @@ Last docs update: 2012-10-03
 
 # What is instant-runoff voting? #
 
-Wikipedia describes IRV very well. [http://en.wikipedia.org/wiki/Instant-runoff_voting](http://en.wikipedia.org/wiki/Instant-runoff_voting)
+Wikipedia describes IRV very well. http://en.wikipedia.org/wiki/Instant-runoff_voting
 
 In this project, IRV is a method of electing one winner. Voters rank candidates in a Google Form and the administrator runs a script with Google Apps Script to determine the winner.
 
 ## Instant-runoff voting from the voters perspective
 
-1) You get one vote that counts. It comes from your top choice that is still eligible.
-2) If a candidate gets a majority of votes, then that candidate wins.
-3) If no candidate has majority of all votes, then the candidate with the least votes is removed.
-4) If your top choice is removed, the next eligible candidate on your list gets a vote. The process repeats until there is a winner.
+1. You get one vote that counts. It comes from your top choice that is still eligible.
+2. If a candidate gets a majority of votes, then that candidate wins.
+3. If no candidate has majority of all votes, then the candidate with the least votes is removed.
+4. If your top choice is removed, the next eligible candidate on your list gets a vote. The process repeats until there is a winner.
 
 _Notes about algorithm_
 
@@ -38,7 +38,7 @@ _Notes about algorithm_
 6. Copy the code from instant-runoff.js into the editor.   
 7. Configure settings in the editor and match the settings with the names of your sheets.
 8. Send out the live form for voting. If you are using keys, don't forget to distribute unique secret keys.
-9. After voting is complete run script.
+9. Run script after voting is complete.
 
 
 # Example election
@@ -106,7 +106,7 @@ The settings in instant-runoff.js should already match the example names in this
 
 Find the live form under Form -> Got to live form.
 
-9\. After voting is complete run script.
+9\. Run script after voting is complete.
 
 On the top bar click "Select function" and click "run_instant_runoff". Click the play arrow pointing to the right.
 
