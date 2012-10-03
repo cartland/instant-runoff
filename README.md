@@ -1,14 +1,14 @@
-# README  
+# README
 
-[Instant Runoff Voting](http://github.com/cartland/instant-runoff "IRV").   
+[Instant Runoff Voting](http://github.com/cartland/instant-runoff "IRV")
 
 
-Author: Chris Cartland   
-Date created: 2012-04-29   
+Author: Chris Cartland
+Date created: 2012-04-29
 Last docs update: 2012-10-03
 
 
-# What is instant-runoff voting? #
+# What is instant-runoff voting?
 
 Wikipedia describes IRV very well. http://en.wikipedia.org/wiki/Instant-runoff_voting
 
@@ -69,6 +69,7 @@ _Notes about editing questions_
 * None of the column names matter.
 
 4\. If you are using keys, create appropriate sheets.
+
 Go to the spreadsheet from the editor by clicking the dropdown "See responses" and clicking "Spreadsheet".
 
 **Rename Sheet1: "Votes"**
@@ -117,7 +118,7 @@ On the top bar click "Select function" and click "run_instant_runoff". Click the
 
 # Settings
 
-Found in [instant-runoff.js](https://github.com/cartland/instant-runoff/blob/master/instant-runoff.js "instant-runoff.js")
+Found in [instant-runoff.js](https://github.com/cartland/instant-runoff/blob/master/instant-runoff.js)
 
 * VOTE\_SHEET\_NAME must match the name of sheet containing votes. "Sheet1" will work for unmodified form sheets. The example uses "Votes".
 * BASE\_ROW defines which row to contains the first voting information. Set this to 2.
