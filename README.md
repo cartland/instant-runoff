@@ -33,12 +33,13 @@ _Notes about algorithm_
 1. Go to Google Drive.
 2. Create a new Google Form.   
 3. Create questions.
-4. If you are using keys, create appropriate sheets.
-5. From the form spreadsheet go to "Tools" -> "Script Editor..."   
-6. Copy the code from instant-runoff.js into the editor.   
-7. Configure settings in the editor and match the settings with the names of your sheets.
-8. Send out the live form for voting. If you are using keys, don't forget to distribute unique secret keys.
-9. Run script after voting is complete.
+4. Rename Sheet1 to match VOTE_SHEET.
+5. If you are using keys, create appropriate sheets.
+6. From the form spreadsheet go to "Tools" -> "Script Editor..."   
+7. Copy the code from instant-runoff.js into the editor.   
+8. Configure settings in the editor and match the settings with the names of your sheets.
+9. Send out the live form for voting. If you are using keys, don't forget to distribute unique secret keys.
+10.Run script after voting is complete.
 
 
 # How to administer example election
@@ -70,7 +71,7 @@ _Notes about editing questions_
 * The choices must be the last questions in the form. This also means you can ask any number of questions before IRV as long as you update the settings.
 * None of the column names matter.
 
-4\. If you are using keys, create appropriate sheets.
+4\. Rename Sheet1 to match VOTE_SHEET.
 
 Go to the spreadsheet from the editor by clicking the dropdown "See responses" and clicking "Spreadsheet".
 
@@ -84,6 +85,8 @@ Go to the spreadsheet from the editor by clicking the dropdown "See responses" a
 * F1, "Choice 4"
 
 These cells in the spreadsheet should automatically populate when you click "Save" during the form creation.
+
+5\. If you are using keys, create appropriate sheets.
 
 **Create New Sheet: "Keys"**
 
@@ -99,21 +102,21 @@ Add at least enough keys to accommodate each voter.
 
 Leave blank.
 
-5\. From the form spreadsheet go to "Tools" -> "Script Editor..."
+6\. From the form spreadsheet go to "Tools" -> "Script Editor..."
 
-6\. Copy the code from instant-runoff.js into the editor.
+7\. Copy the code from instant-runoff.js into the editor.
 
 Save the project (may need to create a project name). 
 
-7\. Configure settings in the editor and match the settings with the names of your sheets.
+8\. Configure settings in the editor and match the settings with the names of your sheets.
 
 The settings in instant-runoff.js should already match the example names in this README.
 
-8\. Send out the live form for voting. If you are using keys, don't forget to distribute unique secret keys.
+9\. Send out the live form for voting. If you are using keys, don't forget to distribute unique secret keys.
 
 Find the live form under Form -> Go to live form.
 
-9\. Run script after voting is complete.
+10\. Run script after voting is complete.
 
 On the top bar click "Select function" and click "run_instant_runoff". Click the play arrow pointing to the right.
 
