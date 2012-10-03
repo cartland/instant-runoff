@@ -41,13 +41,14 @@ _Notes about algorithm_
 9. Run script after voting is complete.
 
 
-# Example election
+# How to administer example election
 
 1\. Go to Google Drive.
 
 https://drive.google.com
 
 2\. Create a new Google Form.
+
 3\. Create questions.
 
 **Edit Form**
@@ -79,6 +80,8 @@ Go to the spreadsheet from the editor by clicking the dropdown "See responses" a
 * E1, "Choice 3"
 * F1, "Choice 4"
 
+Create the maximum number of choices that voters can submit.
+
 **Create New Sheet: "Keys"**
 
 * A2, "secretkey1"
@@ -87,13 +90,14 @@ Go to the spreadsheet from the editor by clicking the dropdown "See responses" a
 * A5, "secretkey4"
 * A6, "secretkey5"
 
-Add at least enough keys to accommodate voters.
+Add at least enough keys to accommodate each voter.
 
 **Create New Sheet: "Used Keys"**
 
 Leave blank.
 
 5\. From the form spreadsheet go to "Tools" -> "Script Editor..."
+
 6\. Copy the code from instant-runoff.js into the editor.
 
 Save the project (may need to create a project name). 
@@ -104,7 +108,7 @@ The settings in instant-runoff.js should already match the example names in this
 
 8\. Send out the live form for voting. If you are using keys, don't forget to distribute unique secret keys.
 
-Find the live form under Form -> Got to live form.
+Find the live form under Form -> Go to live form.
 
 9\. Run script after voting is complete.
 
