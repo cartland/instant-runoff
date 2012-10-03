@@ -61,6 +61,8 @@ Create a title that tells voters what they are voting for.
 * Question 4 - "Choice 3", "", Text, Not Required
 * Question 5 - "Choice 4", "", Text, Not Required
 
+Create the maximum number of choices that voters can submit.
+
 _Notes about editing questions_
 
 * The order that you create form questions matters. Google Forms do not allow you to move around columns, so it's best just to do this right from the beginning.
@@ -81,7 +83,7 @@ Go to the spreadsheet from the editor by clicking the dropdown "See responses" a
 * E1, "Choice 3"
 * F1, "Choice 4"
 
-Create the maximum number of choices that voters can submit.
+These cells in the spreadsheet should automatically populate when you click "Save" during the form creation.
 
 **Create New Sheet: "Keys"**
 
@@ -124,7 +126,7 @@ Found in [instant-runoff.js](https://github.com/cartland/instant-runoff/blob/mas
 * BASE\_ROW defines which row to contains the first voting information. Set this to 2.
 * BASE\_COLUMN is the column number for the first choice. In the example the first choice is in column C, so set this to 3.
 * NUM\_COLUMNS is the maximum number of choices. The example allows up to 4 chocies.
-* USING\_KEYS = true if you want to use keys.
+* USING\_KEYS = true if you want to use keys. The example uses keys so this is set to true.
 * VOTE\_SHEET\_KEYS\_COLUMN specifies which form column contains voter submitted keys in the VOTE_SHEET. In the example the secret keys are in column B, so set this to 2.
 * KEYS\_SHEET\_NAME is the name of the sheet containing the master list of valid voting keys. The examples calls this "Keys".
 * USED\_KEYS\_SHEET\_NAME is the name of the sheet where used keys are recorded. The example calls this "Used Keys".

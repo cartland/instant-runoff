@@ -11,7 +11,7 @@ Last code update: 2012-10-03
 var VOTE_SHEET_NAME = "Votes";
 var BASE_ROW = 2;
 var BASE_COLUMN = 3;
-var NUM_COLUMNS = 10;
+var NUM_COLUMNS = 4;
 
 var USING_KEYS = true;
 var VOTE_SHEET_KEYS_COLUMN = 2;
