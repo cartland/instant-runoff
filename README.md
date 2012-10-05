@@ -36,7 +36,7 @@ _Notes about algorithm_
 4. Rename Sheet1 to match VOTE_SHEET.
 5. If you are using keys, create appropriate sheets.
 6. From the form spreadsheet go to "Tools" -> "Script Editor..."   
-7. Copy the code from instant-runoff.js into the editor.   
+7. Copy the code from instant-runoff.gs into the editor.   
 8. Configure settings in the editor and match the settings with the names of your sheets.
 9. Send out the live form for voting. If you are using keys, don't forget to distribute unique secret keys.
 10.Run script after voting is complete.
@@ -104,13 +104,13 @@ Leave blank.
 
 6\. From the form spreadsheet go to "Tools" -> "Script Editor..."
 
-7\. Copy the code from instant-runoff.js into the editor.
+7\. Copy the code from instant-runoff.gs into the editor.
 
 Save the project (may need to create a project name). 
 
 8\. Configure settings in the editor and match the settings with the names of your sheets.
 
-The settings in instant-runoff.js should already match the example names in this README.
+The settings in instant-runoff.gs should already match the example names in this README.
 
 9\. Send out the live form for voting. If you are using keys, don't forget to distribute unique secret keys.
 
@@ -123,7 +123,7 @@ On the top bar click "Select function" and click "run_instant_runoff". Click the
 
 # Settings
 
-Found in [instant-runoff.js](https://github.com/cartland/instant-runoff/blob/master/instant-runoff.js)
+Found in [instant-runoff.gs](https://github.com/cartland/instant-runoff/blob/master/instant-runoff.gs)
 
 * VOTE\_SHEET\_NAME must match the name of sheet containing votes. "Sheet1" will work for unmodified form sheets. The example uses "Votes".
 * BASE\_ROW defines which row to contains the first voting information. Set this to 2.

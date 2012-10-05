@@ -1,8 +1,13 @@
 /*
-Instant-runoff voting with Google Form
+Instant-runoff voting with Google Form and Google Apps Script
 Author: Chris Cartland
 Date created: 2012-04-29
 Last code update: 2012-10-03
+
+Read usage instructions online
+https://github.com/cartland/instant-runoff
+
+This project may contain bugs. Use at your own risk.
 */
 
 
@@ -302,6 +307,7 @@ function include(arr,obj) {
 }
 
 /*
+Returns the number of consecutive rows that do not have blank values in the first column.
 http://stackoverflow.com/questions/4169914/selecting-the-last-value-of-a-column
 */
 function get_num_rows_with_values(results_range) {
@@ -318,10 +324,7 @@ function get_num_rows_with_values(results_range) {
 }
 
 function clear_background_color() {
-  /* Settings */
-  var base_row = 2, base_column = 2, num_columns = 10;
-  
-  var results_range = get_range_with_values(VOTE_SHEET_NAME, base_row, base_column, num_columns);
+  var results_range = get_range_with_values(VOTE_SHEET_NAME, BASE_ROW, BASE_COLUMN, NUM_COLUMNS);
   if (results_range == null) {
     return;
   }
