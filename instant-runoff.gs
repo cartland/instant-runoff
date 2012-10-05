@@ -2,7 +2,7 @@
 Instant-runoff voting with Google Form and Google Apps Script
 Author: Chris Cartland
 Date created: 2012-04-29
-Last code update: 2012-10-03
+Last code update: 2012-10-04
 
 Read usage instructions online
 https://github.com/cartland/instant-runoff

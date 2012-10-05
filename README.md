@@ -7,7 +7,7 @@ Author: Chris Cartland
 
 Date created: 2012-04-29
 
-Last docs update: 2012-10-03
+Last docs update: 2012-10-05
 
 
 # What is instant-runoff voting?
