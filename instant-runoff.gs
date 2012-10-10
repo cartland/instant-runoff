@@ -4,6 +4,7 @@ Author: Chris Cartland
 Date created: 2012-04-29
 Last code update: 2012-10-10
 
+
 Read usage instructions online
 https://github.com/cartland/instant-runoff
 
@@ -31,7 +32,6 @@ Steps to run an election.
 var VOTE_SHEET_NAME = "Votes";
 var BASE_ROW = 2;
 var BASE_COLUMN = 3;
-var NUM_COLUMNS = 4;
 
 
 var USING_KEYS = true;
@@ -43,15 +43,16 @@ var USED_KEYS_SHEET_NAME = "Used Keys";
 /* End Settings */
 
 
+/* Global variables */
 
+var NUM_COLUMNS;
 
+/* End global variables */
 
 
 /* Notification state */
 
-
 var missing_keys_used_sheet_alert = false;
-
 
 /* End notification state */
 
@@ -85,13 +86,18 @@ function setup_instant_runoff() {
 
 
 function run_instant_runoff() {
+  /* Determine number of voting columns */
+  var active_spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
+  var row1_range = active_spreadsheet.getSheetByName(VOTE_SHEET_NAME).getRange("A1:1");
+  NUM_COLUMNS = get_num_columns_with_values(row1_range) - BASE_COLUMN + 1;
+
+
   /* Reset state */
   missing_keys_used_sheet_alert = false;
   
   /* Begin */
   clear_background_color();
-
-
+  
   var results_range = get_range_with_values(VOTE_SHEET_NAME, BASE_ROW, BASE_COLUMN, NUM_COLUMNS);
   
   if (results_range == null) {
@@ -390,6 +396,24 @@ function get_num_rows_with_values(results_range) {
     num_rows_with_votes += 1;
   }
   return num_rows_with_votes;
+}
+
+
+/*
+Returns the number of consecutive columns that do not have blank values in the first row.
+http://stackoverflow.com/questions/4169914/selecting-the-last-value-of-a-column
+*/
+function get_num_columns_with_values(results_range) {
+  var num_columns_with_values = 0;
+  var num_columns = results_range.getNumColumns();
+  for (var col = 1; col <= num_columns; col++) {
+    var first_is_blank = results_range.getCell(1, col).isBlank();
+    if (first_is_blank) {
+      break;
+    }
+    num_columns_with_values += 1;
+  }
+  return num_columns_with_values;
 }
 
 

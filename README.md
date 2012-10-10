@@ -47,7 +47,7 @@ _Notes about algorithm_
 
 * Go to Google Drive. Create a new Google Form.
 
-    *https://drive.google.com
+    * https://drive.google.com
     
 * Create questions according to instructions on GitHub -- https://github.com/cartland/instant-runoff
 
@@ -87,9 +87,9 @@ The settings in instant-runoff.gs should already match the example names in this
     *Add at least enough keys to accommodate each voter.
 
 * Send out the live form for voting. If you are using keys, don't forget to distribute unique secret keys.
-    *Find the live form under Form -> Go to live form.
+    * Find the live form under Form -> Go to live form.
 * Run function run_instant_runoff().
-    *On the top bar click "Run" and click "run_instant_runoff".
+    * On the top bar click "Run" and click "run_instant_runoff".
 
 # Settings
 
@@ -98,9 +98,9 @@ Found in [instant-runoff.gs](https://github.com/cartland/instant-runoff/blob/mas
 * VOTE\_SHEET\_NAME must match the name of sheet containing votes. "Sheet1" will work for unmodified form sheets. The example uses "Votes".
 * BASE\_ROW defines which row to contains the first voting information. Set this to 2.
 * BASE\_COLUMN is the column number for the first choice. In the example the first choice is in column C, so set this to 3.
-* NUM\_COLUMNS is the maximum number of choices. The example allows up to 4 chocies.
 * USING\_KEYS = true if you want to use keys. The example uses keys so this is set to true.
 * VOTE\_SHEET\_KEYS\_COLUMN specifies which form column contains voter submitted keys in the VOTE_SHEET. In the example the secret keys are in column B, so set this to 2.
 * KEYS\_SHEET\_NAME is the name of the sheet containing the master list of valid voting keys. The examples calls this "Keys".
 * USED\_KEYS\_SHEET\_NAME is the name of the sheet where used keys are recorded. The example calls this "Used Keys".
 
+* NUM\_COLUMNS is the maximum number of choices. As of October 10, 2012, the software figures this out based on the first row of the voting sheet.
