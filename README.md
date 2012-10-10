@@ -46,9 +46,13 @@ _Notes about algorithm_
 # How to administer example election
 
 * Go to Google Drive. Create a new Google Form.
+
     *https://drive.google.com
+    
 * Create questions according to instructions on GitHub -- https://github.com/cartland/instant-runoff
-*Edit Form**
+
+**Edit Form**
+
 Create a title that tells voters what they are voting for.
 
     * Question 1 - "Secret Key", "", Text, Required
