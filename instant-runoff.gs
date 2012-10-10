@@ -1,37 +1,87 @@
-/*
+﻿/*
 Instant-runoff voting with Google Form and Google Apps Script
 Author: Chris Cartland
 Date created: 2012-04-29
-Last code update: 2012-10-04
+Last code update: 2012-10-10
 
 Read usage instructions online
 https://github.com/cartland/instant-runoff
 
+
 This project may contain bugs. Use at your own risk.
+
+
+Steps to run an election.
+* Go to Google Drive. Create a new Google Form.
+* Create questions according to instructions on GitHub -- https://github.com/cartland/instant-runoff
+* From the form spreadsheet go to "Tools" -> "Script Editor..."
+* Copy the code from instant-runoff.gs into the editor.
+* Configure settings in the editor and match the settings with the names of your sheets.
+* Run function setup_instant_runoff().
+* Create keys in the sheet named "Keys".
+* Send out the live form for voting. If you are using keys, don't forget to distribute unique secret keys.
+* Run function run_instant_runoff().
+
 */
 
 
 /* Settings */ 
+
 
 var VOTE_SHEET_NAME = "Votes";
 var BASE_ROW = 2;
 var BASE_COLUMN = 3;
 var NUM_COLUMNS = 4;
 
+
 var USING_KEYS = true;
 var VOTE_SHEET_KEYS_COLUMN = 2;
 var KEYS_SHEET_NAME = "Keys";
 var USED_KEYS_SHEET_NAME = "Used Keys";
 
+
 /* End Settings */
+
+
+
 
 
 
 /* Notification state */
 
+
 var missing_keys_used_sheet_alert = false;
 
+
 /* End notification state */
+
+
+/* Creates new sheets if they do not exist. */
+function setup_instant_runoff() {
+  var active_spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
+  active_spreadsheet.getSheets()[0].setName(VOTE_SHEET_NAME);
+  
+  if (USING_KEYS) {
+    if (active_spreadsheet.getSheetByName(KEYS_SHEET_NAME) == null) {
+      active_spreadsheet.insertSheet(KEYS_SHEET_NAME);
+      active_spreadsheet.getSheetByName(KEYS_SHEET_NAME).getRange("A1").setValue(KEYS_SHEET_NAME).setFontWeight("bold");
+    }
+    if (active_spreadsheet.getSheetByName(USED_KEYS_SHEET_NAME) == null) {
+      active_spreadsheet.insertSheet(USED_KEYS_SHEET_NAME);
+      active_spreadsheet.getSheetByName(USED_KEYS_SHEET_NAME).getRange("A1").setValue(USED_KEYS_SHEET_NAME).setFontWeight("bold");
+    } else {
+      var a1string = String.fromCharCode(65 + 1 - 1) +
+          BASE_ROW + ':' + 
+          String.fromCharCode(65 + 1 + 1 - 2);
+      var keys_used_range = active_spreadsheet.getSheetByName(USED_KEYS_SHEET_NAME).getRange(a1string);
+      for (var k = 0; k < keys_used_range.getNumRows(); k++) {
+        var cell = keys_used_range.getCell(k+1, 1);
+        cell.setValue("");
+        cell.setBackground('#ffffff');
+      }
+    }
+  }
+}
 
 
 function run_instant_runoff() {
@@ -40,6 +90,7 @@ function run_instant_runoff() {
   
   /* Begin */
   clear_background_color();
+
 
   var results_range = get_range_with_values(VOTE_SHEET_NAME, BASE_ROW, BASE_COLUMN, NUM_COLUMNS);
   
@@ -65,7 +116,12 @@ function run_instant_runoff() {
     }
     var valid_keys_range = get_range_with_values(KEYS_SHEET_NAME, BASE_ROW, 1, 1);
     if (valid_keys_range == null) {
-      Browser.msgBox("List of valid keys cannot be found. Looking for sheet: " + KEYS_SHEET_NAME);
+      var results_sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(KEYS_SHEET_NAME);
+      if (results_sheet == null) {
+        Browser.msgBox("Looking for list of valid keys. Cannot find sheet: " + KEYS_SHEET_NAME);
+      } else {
+        Browser.msgBox("List of valid keys cannot be found in sheet: " + KEYS_SHEET_NAME);
+      }
       return;
     }
     valid_keys = range_to_array(valid_keys_range);
@@ -79,6 +135,7 @@ function run_instant_runoff() {
   
   /* winner is candidate name (string) or null */
   var winner = get_winner(votes, candidates);
+
 
   while (winner == null) {
     /* Modify candidates to only include remaining candidates */
@@ -97,8 +154,12 @@ function run_instant_runoff() {
   if (missing_keys_used_sheet_alert) {
     Browser.msgBox("Unable to record keys used. Looking for sheet: " + USED_KEYS_SHEET_NAME);    
   }
-  Browser.msgBox("Winner: " + winner);
+  var used_keys_range = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(USED_KEYS_SHEET_NAME).getRange(1,2,1,1);
+  var winner_message = "Winner: " + winner + ".\nDate and time: " +  Utilities.formatDate(new Date(), "PST", "yyyy-MM-dd HH:mm:ss");
+  used_keys_range.setValue(winner_message);
+  Browser.msgBox(winner_message);
 }
+
 
 function get_range_with_values(sheet_string, base_row, base_column, num_columns) {
   var results_sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(sheet_string);
@@ -120,6 +181,7 @@ function get_range_with_values(sheet_string, base_row, base_column, num_columns)
   results_range = results_sheet.getRange(base_row, base_column, num_rows, num_columns);
   return results_range;
 }
+
 
 function range_to_array(results_range) {
   results_range.setBackground("#eeeeee");
@@ -147,6 +209,7 @@ function range_to_array(results_range) {
   return candidates;
 }
 
+
 function get_all_candidates(results_range) {
   results_range.setBackground("#eeeeee");
   
@@ -172,6 +235,7 @@ function get_all_candidates(results_range) {
   }
   return candidates;
 }
+
 
 function get_votes(results_range, candidates, keys_range, valid_keys) {
   if (typeof keys_range === "undefined") {
@@ -227,6 +291,7 @@ function get_votes(results_range, candidates, keys_range, valid_keys) {
   return votes;
 }
 
+
 function update_keys_used(keys_used) {
   var keys_used_range = get_range_with_values(USED_KEYS_SHEET_NAME, BASE_ROW, 1, 1);
   if (keys_used_range != null) {
@@ -256,6 +321,8 @@ function update_keys_used(keys_used) {
 }
 
 
+
+
 function get_winner(votes, candidates) {
   var total = 0;
   var winning = null;
@@ -275,6 +342,7 @@ function get_winner(votes, candidates) {
   }
   return null;
 }
+
 
 function get_remaining_candidates(votes, candidates) {
   var min = -1;
@@ -306,6 +374,7 @@ function include(arr,obj) {
     return (arr.indexOf(obj) != -1);
 }
 
+
 /*
 Returns the number of consecutive rows that do not have blank values in the first column.
 http://stackoverflow.com/questions/4169914/selecting-the-last-value-of-a-column
@@ -323,6 +392,7 @@ function get_num_rows_with_values(results_range) {
   return num_rows_with_votes;
 }
 
+
 function clear_background_color() {
   var results_range = get_range_with_values(VOTE_SHEET_NAME, BASE_ROW, BASE_COLUMN, NUM_COLUMNS);
   if (results_range == null) {
@@ -335,4 +405,3 @@ function clear_background_color() {
     keys_range.setBackground('#eeeeee');
   }
 }
-

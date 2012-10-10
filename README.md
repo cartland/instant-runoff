@@ -32,96 +32,60 @@ _Notes about algorithm_
 
 # Steps to run an election
 
-1. Go to Google Drive.
-2. Create a new Google Form.   
-3. Create questions.
-4. Rename Sheet1 to match VOTE_SHEET.
-5. If you are using keys, create appropriate sheets.
-6. From the form spreadsheet go to "Tools" -> "Script Editor..."   
-7. Copy the code from instant-runoff.gs into the editor.   
-8. Configure settings in the editor and match the settings with the names of your sheets.
-9. Send out the live form for voting. If you are using keys, don't forget to distribute unique secret keys.
-10.Run script after voting is complete.
+* Go to Google Drive. Create a new Google Form.
+* Create questions according to instructions on GitHub -- https://github.com/cartland/instant-runoff
+* From the form spreadsheet go to "Tools" -> "Script Editor..."
+* Copy the code from instant-runoff.gs into the editor.
+* Configure settings in the editor and match the settings with the names of your sheets.
+* Run function setup_instant_runoff().
+* Create keys in the sheet named "Keys".
+* Send out the live form for voting. If you are using keys, don't forget to distribute unique secret keys.
+* Run function run_instant_runoff().
 
 
 # How to administer example election
 
-1\. Go to Google Drive.
-
-https://drive.google.com
-
-2\. Create a new Google Form.
-
-3\. Create questions.
-
+* Go to Google Drive. Create a new Google Form.
+**https://drive.google.com
+* Create questions according to instructions on GitHub -- https://github.com/cartland/instant-runoff
 **Edit Form**
-
 Create a title that tells voters what they are voting for.
 
-* Question 1 - "Secret Key", "", Text, Required
-* Question 2 - "Choice 1", "", Text, Required
-* Question 3 - "Choice 2", "", Text, Not Required
-* Question 4 - "Choice 3", "", Text, Not Required
-* Question 5 - "Choice 4", "", Text, Not Required
+** Question 1 - "Secret Key", "", Text, Required
+** Question 2 - "Choice 1", "", Text, Required
+** Question 3 - "Choice 2", "", Text, Not Required
+** Question 4 - "Choice 3", "", Text, Not Required
+** Question 5 - "Choice 4", "", Text, Not Required
 
 Create the maximum number of choices that voters can submit.
 
 _Notes about editing questions_
 
-* The order that you create form questions matters. Google Forms do not allow you to move around columns, so it's best just to do this right from the beginning.
-* If you mess up it is possible to cleverly modify the questions, but it's usually time consuming and easier to start from scratch.
-* The choices must be the last questions in the form. This also means you can ask any number of questions before IRV as long as you update the settings.
-* None of the column names matter.
+** The order that you create form questions matters. Google Forms do not allow you to move around columns, so it's best just to do this right from the beginning.
+** If you mess up it is possible to cleverly modify the questions, but it's usually time consuming and easier to start from scratch.
+** The choices must be the last questions in the form. This also means you can ask any number of questions before IRV as long as you update the settings.
+** None of the column names matter.
 
-4\. Rename Sheet1 to match VOTE_SHEET.
-
-Go to the spreadsheet from the editor by clicking the dropdown "See responses" and clicking "Spreadsheet".
-
-**Rename Sheet1: "Votes"**
-
-* A1, "Timestamp"
-* B1, "Secret Key"
-* C1, "Choice 1"
-* D1, "Choice 2"
-* E1, "Choice 3"
-* F1, "Choice 4"
-
-These cells in the spreadsheet should automatically populate when you click "Save" during the form creation.
-
-5\. If you are using keys, create appropriate sheets.
-
-**Create New Sheet: "Keys"**
-
-* A2, "secretkey1"
-* A3, "secretkey2"
-* A4, "secretkey3"
-* A5, "secretkey4"
-* A6, "secretkey5"
-
-Add at least enough keys to accommodate each voter.
-
-**Create New Sheet: "Used Keys"**
-
-Leave blank.
-
-6\. From the form spreadsheet go to "Tools" -> "Script Editor..."
-
-7\. Copy the code from instant-runoff.gs into the editor.
-
+* From the form spreadsheet go to "Tools" -> "Script Editor..."
+Go to the spreadsheet from the editor by clicking the dropdown "See responses" and clicking "Spreadsheet". "Tools" is on the top bar.
+* Copy the code from instant-runoff.gs into the editor.
 Save the project (may need to create a project name). 
-
-8\. Configure settings in the editor and match the settings with the names of your sheets.
-
+* Configure settings in the editor and match the settings with the names of your sheets.
 The settings in instant-runoff.gs should already match the example names in this README.
+* Run function setup_instant_runoff().
+* Create keys in the sheet named "Keys".
+** A2, "secretkey1"
+** A3, "secretkey2"
+** A4, "secretkey3"
+** A5, "secretkey4"
+** A6, "secretkey5"
 
-9\. Send out the live form for voting. If you are using keys, don't forget to distribute unique secret keys.
+**Add at least enough keys to accommodate each voter.
 
-Find the live form under Form -> Go to live form.
-
-10\. Run script after voting is complete.
-
-On the top bar click "Select function" and click "run_instant_runoff". Click the play arrow pointing to the right.
-
+* Send out the live form for voting. If you are using keys, don't forget to distribute unique secret keys.
+**Find the live form under Form -> Go to live form.
+* Run function run_instant_runoff().
+**On the top bar click "Run" and click "run_instant_runoff".
 
 # Settings
 
