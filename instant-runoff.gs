@@ -2,7 +2,7 @@
 Instant-runoff voting with Google Form and Google Apps Script
 Author: Chris Cartland
 Date created: 2012-04-29
-Last code update: 2012-10-10
+Last code update: 2012-10-16
 
 
 Read usage instructions online
@@ -18,10 +18,12 @@ Steps to run an election.
 * From the form spreadsheet go to "Tools" -> "Script Editor..."
 * Copy the code from instant-runoff.gs into the editor.
 * Configure settings in the editor and match the settings with the names of your sheets.
-* Run function setup_instant_runoff().
+* From the form spreadsheet go to "Instant Runoff" -> "Setup".
+    * If this is not an option, run the function setup_instant_runoff() directly from the Script Editor.
 * Create keys in the sheet named "Keys".
-* Send out the live form for voting. If you are using keys, don't forget to distribute unique secret keys.
-* Run function run_instant_runoff().
+* Send out the live form for voting. If you are using keys, don't forget to distribute unique secret keys to voters.
+* From the form spreadsheet go to "Instant Runoff" -> "Run".
+    * If this is not an option, run the function run_instant_runoff() directly from the Script Editor.
 
 */
 
@@ -82,8 +84,25 @@ function setup_instant_runoff() {
       }
     }
   }
+  create_menu_items();
 }
 
+function create_menu_items() {
+    var ss = SpreadsheetApp.getActiveSpreadsheet();
+    var menuEntries = [ {name: "Setup", functionName: "setup_instant_runoff"},
+                        {name: "Run", functionName: "run_instant_runoff"} ];
+    ss.addMenu("Instant Runoff", menuEntries);
+}
+
+/* Create menus */
+function onOpen() {
+    setup_instant_runoff();
+}
+
+/* Create menus when installed */
+function onInstall() {
+    onOpen();
+}
 
 function run_instant_runoff() {
   /* Determine number of voting columns */
