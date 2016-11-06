@@ -176,12 +176,14 @@ function run_instant_runoff() {
     winner = get_winner(votes, candidates);
   }
   
-  if (missing_keys_used_sheet_alert) {
-    Browser.msgBox("Unable to record keys used. Looking for sheet: " + USED_KEYS_SHEET_NAME);    
+  if (USING_KEYS) {
+    if (missing_keys_used_sheet_alert) {
+      Browser.msgBox("Unable to record keys used. Looking for sheet: " + USED_KEYS_SHEET_NAME);    
+    }
+    var used_keys_range = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(USED_KEYS_SHEET_NAME).getRange(1,2,1,1);
+    used_keys_range.setValue(winner_message);
   }
-  var used_keys_range = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(USED_KEYS_SHEET_NAME).getRange(1,2,1,1);
   var winner_message = "Winner: " + winner + ".\nDate and time: " +  Utilities.formatDate(new Date(), "PST", "yyyy-MM-dd HH:mm:ss");
-  used_keys_range.setValue(winner_message);
   Browser.msgBox(winner_message);
 }
 
