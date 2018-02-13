@@ -29,6 +29,9 @@ _Notes about algorithm_
 * If multiple candidates tie for least votes, then all are removed.
 * It is possible that multiple candidates tie for first place, in which case the vote ends in a tie.
 
+# Example
+* [Example Spreadsheet](https://drive.google.com/open?id=1U-3sqm-SVf9kWd6mCaBNodlZWsQRT1o___9ZgUGPeD0)
+* [Example Form](https://docs.google.com/forms/d/1rk46UVf-6s_jmY-NVXToq4DYwy17Pwspuif9bYYTz7w/viewform?edit_requested=true)
 
 # Steps to run an election
 
