@@ -33,6 +33,10 @@ _Notes about algorithm_
 * [Example Spreadsheet](https://drive.google.com/open?id=1U-3sqm-SVf9kWd6mCaBNodlZWsQRT1o___9ZgUGPeD0)
 * [Example Form](https://docs.google.com/forms/d/1rk46UVf-6s_jmY-NVXToq4DYwy17Pwspuif9bYYTz7w/viewform?edit_requested=true)
 
+![Example Spreadsheet Screenshot](ExampleSpreadsheet.png)
+
+![Example Form Screenshot](ExampleForm.png)
+
 # Steps to run an election
 
 Steps to run an election.
